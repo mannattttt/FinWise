@@ -1,0 +1,82 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-error.log
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build artifacts
+dist/
+build/
+.cache/
+
+# Editor and IDE settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+logs
+*.log
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
+*.bak
+*.orig
+
+# Coverage (for testing)
+coverage/
+
+# React Native / Metro bundler cache
+.expo/
+.expo-shared/
+
+# TypeScript
+*.tsbuildinfo
+
+# Linting
+eslintcache
+
+# Storybook
+.storybook-out/
+
+# Docker
+docker-compose.override.yml
+
+# Parcel cache
+.cache
+.parcel-cache
+
+# JetBrains IDE files
+.idea/
+
+# Firebase
+.firebase/
+
+# Next.js
+.next/
+out/
+
+# MacOS system files
+*.DS_Store
+
+# CI/CD
+.npm/
+.vercel
+.netlify
