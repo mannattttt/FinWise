@@ -1,19 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const messagesEndRef = useRef(null);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
 
   const sendMessage = async () => {
     if (!inputMessage.trim()) return;
@@ -59,41 +50,44 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gray-100">
+    <div className="fixed inset-0 flex flex-col bg-gray-100 overflow-hidden">
       {/* Main Chat Container */}
-      <div className="flex-grow flex flex-col justify-center items-center p-4 overflow-y-auto">
+      <div className="flex-grow flex flex-col justify-center items-center p-4 overflow-hidden">
         {messages.length === 0 ? (
           <div className="text-center">
             <h1 className="text-4xl font-bold text-gray-800 mb-4">What can I help with?</h1>
             <p className="text-gray-500">Ask anything</p>
           </div>
         ) : (
-          <div className="w-full max-w-3xl space-y-4">
-            {messages.map((msg, index) => (
-              <div 
-                key={index} 
-                className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-              >
-                <div 
-                  className={`
-                    max-w-[80%] px-4 py-3 rounded-2xl 
-                    ${msg.sender === 'user' 
-                      ? 'bg-blue-500 text-white' 
-                      : 'bg-white text-gray-800 border'}
-                  `}
-                >
-                  {msg.text}
-                </div>
+          <div className="w-full max-w-3xl h-full flex flex-col overflow-hidden">
+            <div className="flex-grow overflow-hidden">
+              <div className="space-y-4 h-full overflow-y-auto scrollbar-hide">
+                {messages.map((msg, index) => (
+                  <div 
+                    key={index} 
+                    className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                  >
+                    <div 
+                      className={`
+                        max-w-[80%] px-4 py-3 rounded-2xl 
+                        ${msg.sender === 'user' 
+                          ? 'bg-blue-500 text-white' 
+                          : 'bg-white text-gray-800 border'}
+                      `}
+                    >
+                      {msg.text}
+                    </div>
+                  </div>
+                ))}
+                {isLoading && (
+                  <div className="flex justify-start">
+                    <div className="bg-white text-gray-800 px-4 py-3 rounded-2xl border">
+                      Typing...
+                    </div>
+                  </div>
+                )}
               </div>
-            ))}
-            {isLoading && (
-              <div className="flex justify-start">
-                <div className="bg-white text-gray-800 px-4 py-3 rounded-2xl border">
-                  Typing...
-                </div>
-              </div>
-            )}
-            <div ref={messagesEndRef} />
+            </div>
           </div>
         )}
       </div>
