@@ -9,17 +9,11 @@ import FeaturesSection from './components/featuresection';
 import GlobalStyles from './components/GlobalStyles';
 import Chatbot from './components/chatbot';
 
-// Import placeholder pages for features
-// import LearnPage from './pages/LearnPage';
-// import EligibilityCheckerPage from './pages/EligibilityCheckerPage';
-// import EMICalculatorPage from './pages/EMICalculatorPage';
-
 // Import assets
 import logo from "./assets/logo.png";
 
 function App() {
   const [showFeatures, setShowFeatures] = useState(false);
-  const featuresRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,10 +29,6 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToFeatures = () => {
-    featuresRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "#", label: "Articles" },
@@ -48,15 +38,12 @@ function App() {
 
   const HomePage = () => (
     <main className="flex-grow flex flex-col items-center justify-center px-5 mt-32">
-      <Hero onGetStartedClick={scrollToFeatures} />
+      <Hero />
       
       {/* Large spacer */}
       <div className="h-screen"></div>
 
-      {/* Add ref to FeaturesSection */}
-      <div ref={featuresRef}>
-        <FeaturesSection visible={showFeatures} />
-      </div>
+      <FeaturesSection visible={showFeatures} />
     </main>
   );
 
@@ -69,9 +56,6 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePage />} />
-          {/* <Route path="/learn" element={<LearnPage />} />
-          <Route path="/eligibility-checker" element={<EligibilityCheckerPage />} />
-          <Route path="/emi-calculator" element={<EMICalculatorPage />} /> */}
           <Route path="/finbot" element={<Chatbot fullPage={true} />} />
         </Routes>
       </div>
