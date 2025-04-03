@@ -1,6 +1,8 @@
+import { useClerk } from '@clerk/clerk-react';
 import React from 'react';
 
 const Hero = ({ onGetStartedClick }) => {
+  const { openSignIn } = useClerk();
   return (
     <section className="text-center max-w-full px-4">
       <h1 className="text-6xl font-extrabold leading-none mb-4 mt-20 whitespace-nowrap">
@@ -12,9 +14,9 @@ const Hero = ({ onGetStartedClick }) => {
 
       <div className="flex justify-center mt-8">
         <button 
-          onClick={onGetStartedClick}
+          onClick={() => openSignIn()}
           className="px-8 py-4 rounded bg-gray-800 text-white text-lg font-medium cursor-pointer transition-all duration-200 hover:bg-gray-700 active:scale-95"
-        >
+          >
           Get Started
         </button>
       </div>

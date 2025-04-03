@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-// Import components
 import Logo from './components/logo';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -12,7 +10,7 @@ import Chatbot from './components/chatbot';
 // Import assets
 import logo from "./assets/logo.png";
 
-function App() {
+function App() {  
   const [showFeatures, setShowFeatures] = useState(false);
 
   useEffect(() => {
