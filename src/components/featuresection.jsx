@@ -10,35 +10,31 @@ const FeaturesSection = ({ visible }) => {
       icon: "📖",
       title: "Learn",
       description: "Master the basics of banking, savings, and smart money management.",
-      route: "/learn"
+      route: "/learn" // Added route
     },
     {
       icon: "✅",
       title: "Smart Eligibility Checker",
       description: "Assess your eligibility for loans, credit cards, and financial products.",
-      route: "/eligibility-checker"
+      route: "/eligibility-checker" // Added route
     },
     {
       icon: "🤖",
       title: "FinBot",
       description: "Get instant financial advice and personalized money-saving tips.",
-      route: "/finbot"
+      route: "/chatbot" // Existing route
     },
     {
       icon: "🧮",
       title: "EMI Loan Calculator",
       description: "Calculate your monthly EMI for loans and plan your repayments smarter.",
-      route: "/emi-calculator"
+      route: "/calculator" // Added route
     }
   ];
 
-  const handleFeatureClick = (route) => {
-    // For FinBot, open in a new tab
-    if (route === '/finbot') {
-      window.open(route, '_blank', 'noopener,noreferrer');
-    } else {
-      // For other features, navigate within the app
-      navigate(route);
+  const handleFeatureClick = (feature) => {
+    if (feature.route) {
+      navigate(feature.route);
     }
   };
 
@@ -54,7 +50,7 @@ const FeaturesSection = ({ visible }) => {
             icon={feature.icon}
             title={feature.title}
             description={feature.description}
-            onFeatureClick={() => handleFeatureClick(feature.route)}
+            onFeatureClick={() => handleFeatureClick(feature)}
           />
         ))}
       </div>

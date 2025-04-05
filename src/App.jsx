@@ -6,7 +6,7 @@ import Hero from './components/Hero';
 import FeaturesSection from './components/featuresection';
 import GlobalStyles from './components/GlobalStyles';
 import Chatbot from './components/chatbot';
-
+import EnhancedEMICalculator from './components/emicalculator'
 // Import assets
 import logo from "./assets/logo.png";
 
@@ -54,7 +54,11 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/finbot" element={<Chatbot fullPage={true} />} />
+          <Route path="/chatbot" element={<Chatbot fullPage={true} />} />
+          <Route path="/calculator" element={<EnhancedEMICalculator fullPage={true} />} />
+          
+
+          
         </Routes>
       </div>
     </Router>
