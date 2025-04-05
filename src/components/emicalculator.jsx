@@ -184,13 +184,13 @@ const EnhancedEMICalculator = () => {
   ];
   
   const COLORS = ['#2E8B57', '#4CAF50'];
-  const COMPARE_COLORS = ['#FF6384', '#36A2EB'];
+  const COMPARE_COLORS = ['#2E8B57', '#4CAF50'];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white">
       <div className="container mx-auto px-4 py-8">
         <div className="mb-6 text-center">
-          <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
+          <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-700 to-green-400">
             Advanced EMI Calculator
           </h1>
           <p className="text-gray-400 mt-2">Calculate, analyze, and optimize your loan repayments</p>
@@ -342,15 +342,15 @@ const EnhancedEMICalculator = () => {
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
                       <p className="text-sm text-gray-400">Months Saved</p>
-                      <p className="text-xl font-bold text-blue-400">{prepaymentImpact.monthsSaved}</p>
+                      <p className="text-xl font-bold text-green-400">{prepaymentImpact.monthsSaved}</p>
                     </div>
                     <div>
                       <p className="text-sm text-gray-400">Interest Saved</p>
-                      <p className="text-xl font-bold text-blue-400">₹{prepaymentImpact.interestSaved}</p>
+                      <p className="text-xl font-bold text-green-400">₹{prepaymentImpact.interestSaved}</p>
                     </div>
                     <div>
                       <p className="text-sm text-gray-400">New Total Payment</p>
-                      <p className="text-xl font-bold text-blue-400">₹{prepaymentImpact.newTotalPayment.toFixed(2)}</p>
+                      <p className="text-xl font-bold text-green-400">₹{prepaymentImpact.newTotalPayment.toFixed(2)}</p>
                     </div>
                   </div>
                 </CustomCardContent>
