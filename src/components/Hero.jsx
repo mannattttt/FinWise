@@ -2,7 +2,7 @@ import { useClerk } from '@clerk/clerk-react';
 import React from 'react';
 
 const Hero = ({ onGetStartedClick }) => {
-  const { openSignIn } = useClerk();
+  useClerk();
   return (
     <section className="text-center max-w-full px-4">
       <h1 className="text-7xl md:text-8xl font-extrabold leading-tight mb-4 mt-20 whitespace-nowrap">

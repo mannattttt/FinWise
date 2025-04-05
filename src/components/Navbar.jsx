@@ -15,7 +15,7 @@ const NavItem = ({ href, label }) => {
 };
 
 const Navbar = ({ links }) => {
-  const { isSignedIn, user } = useUser();
+  const { isSignedIn } = useUser();
 
   return (
     <nav className="fixed top-5 left-1/2 transform -translate-x-1/2 w-max bg-black bg-opacity-90 px-8 py-3 rounded-full border-2 border-white backdrop-blur-lg z-50">

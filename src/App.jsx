@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Logo from './components/logo';
 import Navbar from './components/Navbar';
@@ -7,7 +7,7 @@ import FeaturesSection from './components/featuresection';
 import GlobalStyles from './components/GlobalStyles';
 import Chatbot from './components/chatbot';
 import EnhancedEMICalculator from './components/emicalculator'
-// Import assets
+import BankingNewsComponent from "./components/articles";
 import logo from "./assets/logo.png";
 
 function App() {  
@@ -29,8 +29,8 @@ function App() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "#", label: "Articles" },
-    { href: "#", label: "Settings" },
+    { href: "/articles", label: "Articles" },
+    { href: "#", label: "About Us" },
     { href: "#", label: "Help" }
   ];
 
@@ -56,9 +56,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/chatbot" element={<Chatbot fullPage={true} />} />
           <Route path="/calculator" element={<EnhancedEMICalculator fullPage={true} />} />
-          
-
-          
+          <Route path="/articles" element={<BankingNewsComponent fullPage={true} />} /> 
         </Routes>
       </div>
     </Router>
