@@ -63,7 +63,7 @@ function App() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/articles", label: "Articles" },
-    { href: "#", label: "About Us" },
+    { href: "/AboutUs", label: "About Us" },
     { href: "#", label: "Help" }
   ];
 
@@ -90,26 +90,15 @@ function App() {
               <HomePage />
             </AppLayout>
           } />
-          <Route path="/" element={
-            <AppLayout links={navLinks}>
-              <HomePage />
-            </AppLayout>
-          } />
           <Route path="/chatbot" element={<Chatbot fullPage={true} />} />
           <Route path="/calculator" element={
-            <AppLayout links={navLinks}>
               <EnhancedEMICalculator fullPage={true} />
-            </AppLayout>
           } />
           <Route path="/learn" element={
-            <AppLayout links={navLinks}>
               <LearnPage />
-            </AppLayout>
           } />
           <Route path="/eligibility-checker" element={
-            <AppLayout links={navLinks}>
               <EnhancedFinancialEligibilityChecker />
-            </AppLayout>
           } />
           <Route path="/learn/banking-terms" element={
             <AppLayout links={navLinks}>
@@ -117,9 +106,7 @@ function App() {
             </AppLayout>
           } />
           <Route path="/articles" element={
-            <AppLayout links={navLinks}>
               <BankingNewsComponent />
-            </AppLayout>
           } />
         </Routes>
       </div>
