@@ -3,7 +3,7 @@ import React from 'react';
 
 const NavItem = ({ href, label }) => {
   return (
-    <li className="inline">
+    <li className="inline bg-black">
       <a 
         href={href} 
         className="text-white no-underline text-lg font-medium px-4 py-2 rounded-3xl transition-all duration-300 ease-in-out hover:bg-white hover:bg-opacity-20 hover:scale-110"
