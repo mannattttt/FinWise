@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Logo from './components/logo';
@@ -14,7 +13,6 @@ import logo from "./assets/logo.png";
 import BankingNewsComponent from "./components/articles";
 import EnhancedFinancialEligibilityChecker from "./components/eligibility_checker";
 import AboutUs from "./components/AboutUs";
-
 
 // 🔁 ScrollToTop component defined inside App.js
 const ScrollToTop = () => {
@@ -65,13 +63,13 @@ function App() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/articles", label: "Articles" },
-    { href: "/AboutUs", label: "AboutUs" },  
-     { href: "#", label: "Help" }
+    { href: "/AboutUs", label: "About Us" },
+    { href: "#", label: "Help" }
   ];
 
   const HomePage = () => (
     <main className="flex-grow flex flex-col items-center justify-center px-5 mt-32">
-      <Hero />
+      <Hero scrollToFeatures={scrollToFeatures} />
       
       {/* Large spacer */}
       <div className="h-screen"></div>
