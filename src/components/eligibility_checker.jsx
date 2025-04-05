@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const EnhancedFinancialEligibilityChecker = ({ fullPage = true }) => {
   // State variables to store user input
@@ -10,111 +10,6 @@ const EnhancedFinancialEligibilityChecker = ({ fullPage = true }) => {
 
   // State to store eligibility results
   const [eligibilityResults, setEligibilityResults] = useState(null);
-
-  // Improved NumberInput component with proper cursor position handling
-  const NumberInput = ({ 
-    value, 
-    onChange, 
-    placeholder, 
-    maxLength = 15,
-    allowCommas = true,
-    prefix = '',
-    type = 'text'
-  }) => {
-    const inputRef = useRef(null);
-    const cursorPositionRef = useRef(null);
-    const previousValueRef = useRef(value);
-    
-    // Handle cursor position and formatting
-    useEffect(() => {
-      if (inputRef.current && cursorPositionRef.current !== null) {
-        const input = inputRef.current;
-        
-        // Calculate the cursor position adjustment
-        let cursorPosition = cursorPositionRef.current;
-        
-        // If we've added commas that affect cursor position, adjust accordingly
-        if (allowCommas && value) {
-          const beforeCursorNewValue = value.substring(0, cursorPosition);
-          const beforeCursorPrevValue = previousValueRef.current ? 
-            previousValueRef.current.substring(0, cursorPosition) : '';
-          
-          // Count commas before cursor in both strings
-          const commasInNewBeforeCursor = (beforeCursorNewValue.match(/,/g) || []).length;
-          const commasInPrevBeforeCursor = (beforeCursorPrevValue.match(/,/g) || []).length;
-          
-          // Adjust cursor position based on comma difference
-          cursorPosition += (commasInNewBeforeCursor - commasInPrevBeforeCursor);
-        }
-        
-        // Apply the cursor position after the component has rendered
-        setTimeout(() => {
-          if (input) {
-            input.setSelectionRange(cursorPosition, cursorPosition);
-          }
-        }, 0);
-        
-        cursorPositionRef.current = null;
-      }
-      previousValueRef.current = value;
-    }, [value, allowCommas]);
-
-    const handleChange = (e) => {
-      const inputValue = e.target.value;
-      
-      // Save cursor position before any changes
-      cursorPositionRef.current = e.target.selectionStart;
-
-      // Remove non-numeric characters except commas
-      let cleanValue = inputValue;
-      if (prefix && cleanValue.startsWith(prefix)) {
-        cleanValue = cleanValue.substring(prefix.length);
-      }
-      
-      // Process input value
-      cleanValue = allowCommas 
-        ? cleanValue.replace(/[^0-9,]/g, '') 
-        : cleanValue.replace(/[^0-9]/g, '');
-      
-      // Remove existing commas before processing
-      const numericValue = cleanValue.replace(/,/g, '');
-      
-      // Limit length to maxLength
-      const trimmedValue = numericValue.slice(0, maxLength);
-      
-      // Format with commas if allowed
-      const formattedValue = allowCommas 
-        ? trimmedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-        : trimmedValue;
-      
-      // Update value
-      onChange(formattedValue);
-    };
-    
-
-    return (
-      <div className="relative">
-        {prefix && (
-          <span className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500">
-            {prefix}
-          </span>
-        )}
-        <input
-          ref={inputRef}
-          type="text"
-          inputMode="numeric"
-          pattern="[0-9]*"
-          value={value}
-          onChange={handleChange}
-          placeholder={placeholder}
-          maxLength={maxLength}
-          className={`w-full px-2 py-2 border border-gray-300/50 rounded-lg bg-white/90 
-            focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500
-            ${prefix ? 'pl-6' : ''}`}
-        />
-      </div>
-    );
-  };
 
   // Credit Card Data
   const creditCards = [
@@ -187,6 +82,29 @@ const EnhancedFinancialEligibilityChecker = ({ fullPage = true }) => {
     ]
   };
 
+  // Handle input changes for number fields
+  const handleNumberInput = (e, setter) => {
+    const value = e.target.value;
+    // Only allow numbers
+    if (/^\d*$/.test(value)) {
+      setter(value);
+    }
+  };
+
+  // Handle income input with formatting
+  const handleIncomeInput = (e) => {
+    const value = e.target.value;
+    // Remove any non-digit characters for validation
+    const numericValue = value.replace(/[^\d]/g, '');
+    setIncome(numericValue);
+  };
+
+  // Format income for display
+  const formatIncome = (value) => {
+    if (!value) return '';
+    return `₹${parseInt(value).toLocaleString('en-IN')}`;
+  };
+
   // Calculate Eligibility function
   const calculateEligibility = () => {
     // Basic validation
@@ -195,10 +113,10 @@ const EnhancedFinancialEligibilityChecker = ({ fullPage = true }) => {
       return;
     }
 
-    // Parse values, removing commas
-    const parsedAge = parseInt(age.replace(/,/g, ''));
-    const parsedIncome = parseFloat(income.replace(/,/g, ''));
-    const parsedCreditScore = parseInt(creditScore.replace(/,/g, ''));
+    // Parse values
+    const parsedAge = parseInt(age);
+    const parsedIncome = parseInt(income);
+    const parsedCreditScore = parseInt(creditScore);
 
     // Eligibility logic
     const results = {
@@ -329,24 +247,33 @@ const EnhancedFinancialEligibilityChecker = ({ fullPage = true }) => {
               {/* Age Input */}
               <div>
                 <label className="block text-sm font-medium text-white mb-1">Age</label>
-                <NumberInput 
-                  value={age} 
-                  onChange={setAge}
+                <input 
+                  type="text"
+                  inputMode="numeric"
+                  value={age}
+                  onChange={(e) => handleNumberInput(e, setAge)}
                   placeholder="Enter age"
                   maxLength={3}
+                  className="w-full px-2 py-2 border border-gray-300/50 rounded-lg bg-white/90 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500"
                 />
               </div>
 
               {/* Income Input */}
               <div>
                 <label className="block text-sm font-medium text-white mb-1">Annual Income</label>
-                <NumberInput 
-                  value={income} 
-                  onChange={setIncome}
-                  placeholder="Enter income"
-                  prefix="₹"
-                  maxLength={15}
-                />
+                <div className="relative">
+                  <span className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500">
+                    ₹
+                  </span>
+                  <input 
+                    type="text"
+                    inputMode="numeric"
+                    value={income}
+                    onChange={handleIncomeInput}
+                    placeholder="Enter income"
+                    className="w-full px-2 py-2 pl-6 border border-gray-300/50 rounded-lg bg-white/90 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500"
+                  />
+                </div>
               </div>
 
               {/* Employment Type */}
@@ -367,11 +294,14 @@ const EnhancedFinancialEligibilityChecker = ({ fullPage = true }) => {
               {/* Credit Score */}
               <div>
                 <label className="block text-sm font-medium text-white mb-1">Credit Score</label>
-                <NumberInput 
-                  value={creditScore} 
-                  onChange={setCreditScore}
+                <input 
+                  type="text"
+                  inputMode="numeric"
+                  value={creditScore}
+                  onChange={(e) => handleNumberInput(e, setCreditScore)}
                   placeholder="Enter score"
                   maxLength={3}
+                  className="w-full px-2 py-2 border border-gray-300/50 rounded-lg bg-white/90 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500"
                 />
               </div>
 

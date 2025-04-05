@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Logo from './components/logo';
@@ -14,7 +13,6 @@ import logo from "./assets/logo.png";
 import BankingNewsComponent from "./components/articles";
 import EnhancedFinancialEligibilityChecker from "./components/eligibility_checker";
 import AboutUs from "./components/AboutUs";
-
 
 // 🔁 ScrollToTop component defined inside App.js
 const ScrollToTop = () => {
@@ -65,13 +63,13 @@ function App() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/articles", label: "Articles" },
-    { href: "/AboutUs", label: "AboutUs" },  
-     { href: "#", label: "Help" }
+    { href: "/AboutUs", label: "About Us" },
+    { href: "#", label: "Help" }
   ];
 
   const HomePage = () => (
     <main className="flex-grow flex flex-col items-center justify-center px-5 mt-32">
-      <Hero />
+      <Hero scrollToFeatures={scrollToFeatures} />
       
       {/* Large spacer */}
       <div className="h-screen"></div>
@@ -92,15 +90,26 @@ function App() {
               <HomePage />
             </AppLayout>
           } />
+          <Route path="/" element={
+            <AppLayout links={navLinks}>
+              <HomePage />
+            </AppLayout>
+          } />
           <Route path="/chatbot" element={<Chatbot fullPage={true} />} />
           <Route path="/calculator" element={
+            <AppLayout links={navLinks}>
               <EnhancedEMICalculator fullPage={true} />
+            </AppLayout>
           } />
           <Route path="/learn" element={
+            <AppLayout links={navLinks}>
               <LearnPage />
+            </AppLayout>
           } />
           <Route path="/eligibility-checker" element={
+            <AppLayout links={navLinks}>
               <EnhancedFinancialEligibilityChecker />
+            </AppLayout>
           } />
           <Route path="/learn/banking-terms" element={
             <AppLayout links={navLinks}>
@@ -108,7 +117,9 @@ function App() {
             </AppLayout>
           } />
           <Route path="/articles" element={
+            <AppLayout links={navLinks}>
               <BankingNewsComponent />
+            </AppLayout>
           } />
           <Route path="/AboutUs" element={
             <AppLayout links={navLinks}>
@@ -122,4 +133,3 @@ function App() {
 }
 
 export default App;
-git merge your-branch-name

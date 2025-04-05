@@ -2,8 +2,21 @@ import { useClerk } from '@clerk/clerk-react';
 import React from 'react';
 import Navbar from './Navbar';
 
-const Hero = ({ onGetStartedClick }) => {
+const Hero = ({ onGetStartedClick, scrollToFeatures }) => {
   const { openSignIn } = useClerk();
+  
+  const handleGetStarted = () => {
+    
+    if (scrollToFeatures) {
+      scrollToFeatures();
+    }
+    
+    
+    if (onGetStartedClick) {
+      onGetStartedClick();
+    }
+  };
+  
   return (
     <section className="text-center max-w-full px-4">
         <Navbar/>
@@ -16,7 +29,7 @@ const Hero = ({ onGetStartedClick }) => {
 
       <div className="flex justify-center mt-8">
         <button 
-          onClick={onGetStartedClick}
+          onClick={handleGetStarted}
           className="px-8 py-4 border border-green-500 rounded-full bg-gray-800 text-white text-lg font-medium cursor-pointer transition-all duration-200 hover:bg-gray-700 active:scale-95"
         >
           Get Started
