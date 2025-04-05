@@ -13,6 +13,8 @@ import logo from "./assets/logo.png";
 import BankingNewsComponent from "./components/articles";
 import EnhancedFinancialEligibilityChecker from "./components/eligibility_checker";
 import AboutUs from "./components/AboutUs";
+import HelpButton from './components/HelpButton';
+
 
 // 🔁 ScrollToTop component defined inside App.js
 const ScrollToTop = () => {
@@ -126,6 +128,12 @@ function App() {
               <AboutUs />
             </AppLayout>
           } />
+          <Route path="/HelpButton" element={
+            <AppLayout links={navLinks}>
+              <HelpButton />
+            </AppLayout>
+          } />
+          
         </Routes>
       </div>
     </Router>
