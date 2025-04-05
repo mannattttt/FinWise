@@ -13,6 +13,8 @@ import BankingTermsPage from './components/learn/BankingTermsPage';
 import logo from "./assets/logo.png";
 import BankingNewsComponent from "./components/articles";
 import EnhancedFinancialEligibilityChecker from "./components/eligibility_checker";
+import AboutUs from "./components/AboutUs";
+
 
 // 🔁 ScrollToTop component defined inside App.js
 const ScrollToTop = () => {
@@ -63,8 +65,8 @@ function App() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/articles", label: "Articles" },
-    { href: "#", label: "About Us" },
-    { href: "#", label: "Help" }
+    { href: "/AboutUs", label: "AboutUs" },  
+     { href: "#", label: "Help" }
   ];
 
   const HomePage = () => (
@@ -119,6 +121,11 @@ function App() {
           <Route path="/articles" element={
             <AppLayout links={navLinks}>
               <BankingNewsComponent />
+            </AppLayout>
+          } />
+          <Route path="/AboutUs" element={
+            <AppLayout links={navLinks}>
+              <AboutUs />
             </AppLayout>
           } />
         </Routes>
