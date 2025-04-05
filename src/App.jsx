@@ -12,6 +12,7 @@ import LearnPage from './components/learn/LearnPage';
 import BankingTermsPage from './components/learn/BankingTermsPage';
 import logo from "./assets/logo.png";
 import BankingNewsComponent from "./components/articles";
+import EnhancedFinancialEligibilityChecker from "./components/eligibility_checker";
 
 // 🔁 ScrollToTop component defined inside App.js
 const ScrollToTop = () => {
@@ -103,6 +104,11 @@ function App() {
           <Route path="/learn" element={
             <AppLayout links={navLinks}>
               <LearnPage />
+            </AppLayout>
+          } />
+          <Route path="/eligibility-checker" element={
+            <AppLayout links={navLinks}>
+              <EnhancedFinancialEligibilityChecker />
             </AppLayout>
           } />
           <Route path="/learn/banking-terms" element={
