@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Logo from './components/logo';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -10,8 +10,23 @@ import EnhancedEMICalculator from './components/emicalculator'
 // Import assets
 import logo from "./assets/logo.png";
 
+// Create a wrapper component that conditionally renders the navbar
+const AppLayout = ({ children, links }) => {
+  const location = useLocation();
+  const isChatbotRoute = location.pathname === "/chatbot";
+  
+  return (
+    <>
+      {!isChatbotRoute && <Logo src={logo} alt="FinWise Logo" />}
+      {!isChatbotRoute && <Navbar links={links} />}
+      {children}
+    </>
+  );
+};
+
 function App() {  
   const [showFeatures, setShowFeatures] = useState(false);
+  const featuresRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +42,10 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToFeatures = () => {
+    featuresRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "#", label: "Articles" },
@@ -36,12 +55,14 @@ function App() {
 
   const HomePage = () => (
     <main className="flex-grow flex flex-col items-center justify-center px-5 mt-32">
-      <Hero />
+      <Hero onGetStartedClick={scrollToFeatures} />
       
       {/* Large spacer */}
       <div className="h-screen"></div>
 
-      <FeaturesSection visible={showFeatures} />
+      <div ref={featuresRef}>
+        <FeaturesSection visible={showFeatures} />
+      </div>
     </main>
   );
 
@@ -49,16 +70,18 @@ function App() {
     <Router>
       <div className="min-h-screen flex flex-col relative">
         <GlobalStyles />
-        <Logo src={logo} alt="FinWise Logo" />
-        <Navbar links={navLinks} />
-
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={
+            <AppLayout links={navLinks}>
+              <HomePage />
+            </AppLayout>
+          } />
           <Route path="/chatbot" element={<Chatbot fullPage={true} />} />
-          <Route path="/calculator" element={<EnhancedEMICalculator fullPage={true} />} />
-          
-
-          
+          <Route path="/calculator" element={
+            <AppLayout links={navLinks}>
+              <EnhancedEMICalculator fullPage={true} />
+            </AppLayout>
+          } />
         </Routes>
       </div>
     </Router>
