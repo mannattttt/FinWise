@@ -1,29 +1,42 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import FeatureBox from './feature';
 
 const FeaturesSection = ({ visible }) => {
+  const navigate = useNavigate();
+
   const features = [
     {
       icon: "📖",
       title: "Learn",
-      description: "Master the basics of banking, savings, and smart money management."
+      description: "Master the basics of banking, savings, and smart money management.",
+      route: "/learn" // Added route
     },
     {
       icon: "✅",
       title: "Smart Eligibility Checker",
-      description: "Assess your eligibility for loans, credit cards, and financial products."
+      description: "Assess your eligibility for loans, credit cards, and financial products.",
+      route: "/eligibility-checker" // Added route
     },
     {
       icon: "🤖",
       title: "FinBot",
-      description: "Get instant financial advice and personalized money-saving tips."
+      description: "Get instant financial advice and personalized money-saving tips.",
+      route: "/chatbot" // Existing route
     },
     {
       icon: "🧮",
       title: "EMI Loan Calculator",
-      description: "Calculate your monthly EMI for loans and plan your repayments smarter."
+      description: "Calculate your monthly EMI for loans and plan your repayments smarter.",
+      route: "/calculator" // Added route
     }
   ];
+
+  const handleFeatureClick = (feature) => {
+    if (feature.route) {
+      navigate(feature.route);
+    }
+  };
 
   return (
     <section className={`text-center px-5 transition-all duration-800 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
@@ -37,7 +50,7 @@ const FeaturesSection = ({ visible }) => {
             icon={feature.icon}
             title={feature.title}
             description={feature.description}
-            onFeatureClick={() => {}} // No action on click
+            onFeatureClick={() => handleFeatureClick(feature)}
           />
         ))}
       </div>

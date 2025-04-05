@@ -15,8 +15,8 @@ const Hero = ({ onGetStartedClick }) => {
       <div className="flex justify-center mt-8">
         <button 
           onClick={() => openSignIn()}
-          className="px-8 py-4 rounded bg-gray-800 text-white text-lg font-medium cursor-pointer transition-all duration-200 hover:bg-gray-700 active:scale-95"
-          >
+          className="px-8 py-4 rounded-full border border-green-500 bg-black text-white text-lg font-medium cursor-pointer transition-all duration-200 hover:bg-gray-900 active:scale-95"
+        >
           Get Started
         </button>
       </div>
