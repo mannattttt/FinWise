@@ -1,14 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+// App.jsx
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Logo from './components/logo';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import FeaturesSection from './components/featuresection';
 import GlobalStyles from './components/GlobalStyles';
 import Chatbot from './components/chatbot';
-import EnhancedEMICalculator from './components/emicalculator'
-// Import assets
-import logo from "./assets/logo.png";
+import EnhancedEMICalculator from './components/emicalculator';
+import EnhancedFinancialEligibilityChecker from "./components/eligibility_checker";
 
 function App() {  
   const [showFeatures, setShowFeatures] = useState(false);
@@ -27,13 +26,6 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "#", label: "Articles" },
-    { href: "#", label: "Settings" },
-    { href: "#", label: "Help" }
-  ];
-
   const HomePage = () => (
     <main className="flex-grow flex flex-col items-center justify-center px-5 mt-32">
       <Hero />
@@ -49,16 +41,12 @@ function App() {
     <Router>
       <div className="min-h-screen flex flex-col relative">
         <GlobalStyles />
-        <Logo src={logo} alt="FinWise Logo" />
-        <Navbar links={navLinks} />
-
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/chatbot" element={<Chatbot fullPage={true} />} />
           <Route path="/calculator" element={<EnhancedEMICalculator fullPage={true} />} />
-          
-
-          
+          <Route path="/learn" element={<EnhancedEMICalculator fullPage={true} />} />
+          <Route path="/eligibility-checker" element={<EnhancedFinancialEligibilityChecker fullPage={true} />} />
         </Routes>
       </div>
     </Router>

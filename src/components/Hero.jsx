@@ -1,10 +1,12 @@
 import { useClerk } from '@clerk/clerk-react';
 import React from 'react';
+import Navbar from './Navbar';
 
 const Hero = ({ onGetStartedClick }) => {
   const { openSignIn } = useClerk();
   return (
     <section className="text-center max-w-full px-4">
+        <Navbar/>
       <h1 className="text-7xl md:text-8xl font-extrabold leading-tight mb-4 mt-20 whitespace-nowrap">
         <span className="text-white">Welcome </span>
         <span className="bg-gradient-to-r from-white to-green-400 bg-clip-text text-transparent">To </span>
