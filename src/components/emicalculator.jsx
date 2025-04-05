@@ -37,20 +37,21 @@ const CustomCardContent = ({ className, children }) => {
 
 const EnhancedEMICalculator = () => {
   // State for loan details
-  const [principal, setPrincipal] = useState(100000);
-  const [interestRate, setInterestRate] = useState(8.5);
-  const [tenure, setTenure] = useState(5);
-  const [tenureType, setTenureType] = useState('years');
-  
+  const [principal, setPrincipal] = useState('');
+  const [interestRate, setInterestRate] = useState('');
+  const [tenure, setTenure] = useState('');
+  const [tenureType, setTenureType] = useState('years'); // Can retain default for selection
+
   // State for prepayment options
-  const [prepaymentAmount, setPrepaymentAmount] = useState(10000);
-  const [prepaymentMonth, setPrepaymentMonth] = useState(12);
-  const [prepaymentFrequency, setPrepaymentFrequency] = useState('one-time');
-  
+  const [prepaymentAmount, setPrepaymentAmount] = useState('');
+  const [prepaymentMonth, setPrepaymentMonth] = useState('');
+  const [prepaymentFrequency, setPrepaymentFrequency] = useState('one-time'); // Can retain default
+
   // State for results
   const [monthlyEMI, setMonthlyEMI] = useState(0);
   const [totalInterest, setTotalInterest] = useState(0);
   const [totalPayment, setTotalPayment] = useState(0);
+
   
   // State for advanced features
   const [amortizationSchedule, setAmortizationSchedule] = useState([]);

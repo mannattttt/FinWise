@@ -104,7 +104,7 @@ const BankingNewsComponent = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-black text-white p-1 overflow-hidden mt-28">
+    <div className="min-h-screen w-full bg-black text-white p-1 overflow-hidden ">
       <div className="max-w-screen-2xl mx-auto rounded-xl shadow-lg ">
         <div className="text-center flex flex-col items-center justify-center p-6">
           <h2 className="text-6xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-emerald-500">
