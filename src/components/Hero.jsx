@@ -11,7 +11,6 @@ const Hero = ({ onGetStartedClick }) => {
         <span className="bg-gradient-to-r from-green-400 to-green-800 bg-clip-text text-transparent">FinWise</span>
       </h1>
       <p className="text-2xl text-gray-400 mb-10">Your smart finance companion.</p>
-
       <div className="flex justify-center mt-8">
         <button 
           onClick={onGetStartedClick}
