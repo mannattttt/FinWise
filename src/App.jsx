@@ -97,34 +97,28 @@ function App() {
           } />
           <Route path="/chatbot" element={<Chatbot fullPage={true} />} />
           <Route path="/calculator" element={
-            <AppLayout links={navLinks}>
+          
               <EnhancedEMICalculator fullPage={true} />
-            </AppLayout>
           } />
           <Route path="/learn" element={
-            <AppLayout links={navLinks}>
+        
               <LearnPage />
-            </AppLayout>
           } />
           <Route path="/eligibility-checker" element={
-            <AppLayout links={navLinks}>
               <EnhancedFinancialEligibilityChecker />
-            </AppLayout>
           } />
           <Route path="/learn/banking-terms" element={
-            <AppLayout links={navLinks}>
               <BankingTermsPage />
-            </AppLayout>
           } />
           <Route path="/articles" element={
-            <AppLayout links={navLinks}>
+            
               <BankingNewsComponent />
-            </AppLayout>
+            
           } />
           <Route path="/AboutUs" element={
-            <AppLayout links={navLinks}>
+            
               <AboutUs />
-            </AppLayout>
+           
           } />
         </Routes>
       </div>
