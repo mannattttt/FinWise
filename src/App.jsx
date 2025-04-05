@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { useUser } from '@clerk/clerk-react';
 import Logo from './components/logo';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -15,6 +16,22 @@ import EnhancedFinancialEligibilityChecker from "./components/eligibility_checke
 import AboutUs from "./components/AboutUs";
 import HelpButton from './components/HelpButton';
 
+// Protected Route component to check authentication
+const ProtectedRoute = ({ children }) => {
+  const { isSignedIn, isLoaded } = useUser();
+  
+  // Show loading or nothing while clerk is loading
+  if (!isLoaded) {
+    return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
+  }
+  
+  // Redirect to home if not signed in
+  if (!isSignedIn) {
+    return <Navigate to="/" replace />;
+  }
+  
+  return children;
+};
 
 // 🔁 ScrollToTop component defined inside App.js
 const ScrollToTop = () => {
@@ -66,7 +83,7 @@ function App() {
     { href: "/", label: "Home" },
     { href: "/articles", label: "Articles" },
     { href: "/AboutUs", label: "About Us" },
-    { href: "#", label: "Help" }
+    { href: "/HelpButton", label: "Help" }
   ];
 
   const HomePage = () => (
@@ -92,31 +109,30 @@ function App() {
               <HomePage />
             </AppLayout>
           } />
-          <Route path="/" element={
-            <AppLayout links={navLinks}>
-              <HomePage />
-            </AppLayout>
+          <Route path="/chatbot" element={
+            <ProtectedRoute>
+              <Chatbot fullPage={true} />
+            </ProtectedRoute>
           } />
-          <Route path="/chatbot" element={<Chatbot fullPage={true} />} />
           <Route path="/calculator" element={
-            <AppLayout links={navLinks}>
+            <ProtectedRoute>
               <EnhancedEMICalculator fullPage={true} />
-            </AppLayout>
+            </ProtectedRoute>
           } />
           <Route path="/learn" element={
-            <AppLayout links={navLinks}>
+            <ProtectedRoute>
               <LearnPage />
-            </AppLayout>
+            </ProtectedRoute>
           } />
           <Route path="/eligibility-checker" element={
-            <AppLayout links={navLinks}>
+            <ProtectedRoute>
               <EnhancedFinancialEligibilityChecker />
-            </AppLayout>
+            </ProtectedRoute>
           } />
           <Route path="/learn/banking-terms" element={
-            <AppLayout links={navLinks}>
+            <ProtectedRoute>
               <BankingTermsPage />
-            </AppLayout>
+            </ProtectedRoute>
           } />
           <Route path="/articles" element={
             <AppLayout links={navLinks}>
@@ -130,14 +146,13 @@ function App() {
           } />
           <Route path="/HelpButton" element={
             <AppLayout links={navLinks}>
-              <HelpButton />
+              <HelpButton/>
             </AppLayout>
           } />
-          
         </Routes>
       </div>
     </Router>
   );
-}
+} 
 
 export default App;

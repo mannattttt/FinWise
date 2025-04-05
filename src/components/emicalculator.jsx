@@ -187,7 +187,7 @@ const EnhancedEMICalculator = () => {
   const COMPARE_COLORS = ['#2E8B57', '#4CAF50'];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white">
+    <div className="fixed inset-0 overflow-auto bg-gradient-to-b from-black to-gray-900 text-white">
       <div className="container mx-auto px-4 py-8">
         <div className="mb-6 text-center">
           <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-700 to-green-400">

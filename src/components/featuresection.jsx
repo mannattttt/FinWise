@@ -1,40 +1,51 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useUser, useSignIn } from '@clerk/clerk-react';
 import FeatureBox from './feature';
 
 const FeaturesSection = ({ visible }) => {
   const navigate = useNavigate();
+  const { isSignedIn } = useUser();
+  const { openSignIn } = useSignIn();
 
   const features = [
     {
       icon: "📖",
       title: "Learn",
       description: "Master the basics of banking, savings, and smart money management.",
-      route: "/learn" // Added route
+      route: "/learn"
     },
     {
       icon: "✅",
       title: "Smart Eligibility Checker",
       description: "Assess your eligibility for loans, credit cards, and financial products.",
-      route: "/eligibility-checker" // Added route
+      route: "/eligibility-checker"
     },
     {
       icon: "🤖",
       title: "FinBot",
       description: "Get instant financial advice and personalized money-saving tips.",
-      route: "/chatbot" // Existing route
+      route: "/chatbot"
     },
     {
       icon: "🧮",
       title: "EMI Loan Calculator",
       description: "Calculate your monthly EMI for loans and plan your repayments smarter.",
-      route: "/calculator" // Added route
+      route: "/calculator"
     }
   ];
 
   const handleFeatureClick = (feature) => {
     if (feature.route) {
-      navigate(feature.route);
+      // Check if user is signed in before navigating
+      if (isSignedIn) {
+        navigate(feature.route);
+      } else {
+        // If not signed in, open the sign-in modal
+        openSignIn({
+          redirectUrl: feature.route
+        });
+      }
     }
   };
 
