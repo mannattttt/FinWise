@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUser, useSignIn } from '@clerk/clerk-react';
+import { useUser } from '@clerk/clerk-react';
 import FeatureBox from './feature';
 
 const FeaturesSection = ({ visible }) => {
   const navigate = useNavigate();
   const { isSignedIn } = useUser();
-  const { openSignIn } = useSignIn();
+  const [message, setMessage] = useState('');
+  const [showMessage, setShowMessage] = useState(false);
 
   const features = [
     {
@@ -41,10 +42,14 @@ const FeaturesSection = ({ visible }) => {
       if (isSignedIn) {
         navigate(feature.route);
       } else {
-        // If not signed in, open the sign-in modal
-        openSignIn({
-          redirectUrl: feature.route
-        });
+        // Show the message that user must sign in first
+        setMessage(`You must sign in first to access ${feature.title}`);
+        setShowMessage(true);
+        
+        // Hide the message after 3 seconds
+        setTimeout(() => {
+          setShowMessage(false);
+        }, 3000);
       }
     }
   };
@@ -65,6 +70,13 @@ const FeaturesSection = ({ visible }) => {
           />
         ))}
       </div>
+      
+      {/* Authentication message */}
+      {showMessage && (
+        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-red-500 text-white py-2 px-6 rounded-lg shadow-lg z-50 animate-fade-in-up">
+          {message}
+        </div>
+      )}
     </section>
   );
 };
