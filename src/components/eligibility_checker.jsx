@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import BackButton from './back_button';
 
 const EnhancedFinancialEligibilityChecker = ({ fullPage = true }) => {
   // State variables to store user input
@@ -233,6 +234,7 @@ const EnhancedFinancialEligibilityChecker = ({ fullPage = true }) => {
 
   return (
     <div className="fixed inset-0 bg-black">
+      <BackButton/>
       <div className="w-full h-full p-4 flex flex-col">
         <div className="bg-gradient-to-r from-green-900 to-green-500 rounded-xl p-4 mb-4 shadow-lg">
           <h1 className="text-3xl font-bold text-white text-center">Smart Eligibility Checker</h1>

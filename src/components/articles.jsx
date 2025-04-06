@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BarChart3, Newspaper, Wallet, Building, Users, TrendingUp, ArrowRight, Clock } from 'lucide-react';
+import BackButton from './back_button';
 
 const BankingNewsComponent = () => {
   const [articles, setArticles] = useState([]);
@@ -175,9 +176,11 @@ const BankingNewsComponent = () => {
                       className={`bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 group ${
                         hoveredCard === index ? 'shadow-xl shadow-green-900/30 scale-102' : 'shadow-md shadow-gray-900'
                       }`}
+                      
                       onMouseEnter={() => setHoveredCard(index)}
                       onMouseLeave={() => setHoveredCard(null)}
                     >
+                      <BackButton/>
                       <div className="relative">
                         {article.urlToImage ? (
                           <img 

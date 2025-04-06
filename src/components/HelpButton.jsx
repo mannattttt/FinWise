@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import BackButton from './back_button';
 
 const HelpButton = () => {
   const [expandedSection, setExpandedSection] = useState('account');
@@ -86,6 +87,7 @@ const HelpButton = () => {
       overflowY: 'auto',
       zIndex: 9999
     }}>
+      <BackButton/>
       <div style={{
         padding: '2rem',
         width: '100%',

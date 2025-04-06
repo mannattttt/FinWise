@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { Calculator, RefreshCw, CreditCard, Clock, PieChart as PieChartIcon, BarChart as BarChartIcon, Table as TableIcon } from 'lucide-react';
+import BackButton from './back_button';
 
 // Custom Card components instead of using shadcn/ui
 const CustomCard = ({ className, children }) => {
@@ -188,6 +189,7 @@ const EnhancedEMICalculator = () => {
 
   return (
     <div className="fixed inset-0 overflow-auto bg-gradient-to-b from-black to-gray-900 text-white">
+      <BackButton/>
       <div className="container mx-auto px-4 py-8">
         <div className="mb-6 text-center">
           <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-700 to-green-400">

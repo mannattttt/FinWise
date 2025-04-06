@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { basicTerms } from "../../Data/termsData"; // Make sure path is correct
+import BackButton from "../back_button";
 
 const LearnPage = () => {
   // State to track selected category
@@ -61,6 +62,7 @@ const LearnPage = () => {
 
   return (
     <div className="w-full flex flex-col items-center p-4">
+      <BackButton/>
       <motion.h2 
         className="text-4xl font-bold mb-6 text-white text-center uppercase tracking-wider"
         initial={{ scale: 0.9, opacity: 0 }}

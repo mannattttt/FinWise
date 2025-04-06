@@ -135,9 +135,7 @@ function App() {
             </ProtectedRoute>
           } />
           <Route path="/articles" element={
-            <AppLayout links={navLinks}>
               <BankingNewsComponent />
-            </AppLayout>
           } />
           <Route path="/AboutUs" element={
             <AppLayout links={navLinks}>
