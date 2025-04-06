@@ -10,7 +10,7 @@ const BankingNewsComponent = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [visibleArticles, setVisibleArticles] = useState(6);
   
-  const API_KEY = '34e6fa749e344039b429e3ca505cffa3';
+  const API_KEY = '2de4c8c0a54b4a6a9dee88b134852310';
   const filters = [
     { id: 'all', label: 'All News', icon: <Newspaper size={16} /> },
     { id: 'banking-schemes', label: 'Banking Schemes', icon: <BarChart3 size={16} /> },
