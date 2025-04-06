@@ -107,7 +107,8 @@ const Chatbot = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/chat', {
+      // Updated to use the new Render API endpoint
+      const response = await axios.post('https://flask-server-u8z6.onrender.com/chat', {
         message: inputMessage,
         formatStyle: 'bulletPoints' // Tell the backend to format responses with bullet points
       });
