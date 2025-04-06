@@ -10,7 +10,9 @@ const BankingNewsComponent = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [visibleArticles, setVisibleArticles] = useState(6);
   
-  const API_KEY = '2de4c8c0a54b4a6a9dee88b134852310';
+  // Replace hardcoded API key with environment variable
+  const API_KEY = import.meta.env.VITE_API_KEY;
+  
   const filters = [
     { id: 'all', label: 'All News', icon: <Newspaper size={16} /> },
     { id: 'banking-schemes', label: 'Banking Schemes', icon: <BarChart3 size={16} /> },
