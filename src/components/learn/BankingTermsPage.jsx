@@ -152,7 +152,7 @@ const BankingTermsPage = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="relative z-10 group-hover:text-white">BACK TO FINANCIAL TERMS</span>
+            <span className="relative z-10 group-hover:text-white">BACK TO BASIC FINANCIAL TERMS</span>
             <span 
               className="absolute inset-0 bg-gradient-to-r from-blue-600 to-green-600 scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 rounded-full"
             />

@@ -208,7 +208,7 @@ const AboutUs = () => {
               <div className="w-40 h-40 mx-auto mb-6 relative group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-green-500 to-green-300 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse-slow"></div>
                 <div className="relative bg-black rounded-full p-1 h-full w-full">
-                  <img src="src/assets/placeholder/placeholder.png" alt="Mannat" className="w-full h-full rounded-full object-cover transform transition duration-700 hover:scale-110" />
+                  <img src="src/assets/placeholder/mannat.jpeg" alt="Mannat" className="w-full h-full rounded-full object-cover transform transition duration-700 hover:scale-110" />
                 </div>
               </div>
               <h3 className="text-2xl font-semibold text-green-400">Mannat</h3>
@@ -219,7 +219,7 @@ const AboutUs = () => {
               <div className="w-40 h-40 mx-auto mb-6 relative group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-green-500 to-green-300 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse-slow"></div>
                 <div className="relative bg-black rounded-full p-1 h-full w-full">
-                  <img src="src/assets/placeholder/placeholder.png" alt="Unnati" className="w-full h-full rounded-full object-cover transform transition duration-700 hover:scale-110" />
+                  <img src="src/assets/placeholder/unnati.jpeg" alt="Unnati" className="w-full h-full rounded-full object-cover transform transition duration-700 hover:scale-110" />
                 </div>
               </div>
               <h3 className="text-2xl font-semibold text-green-400">Unnati</h3>
@@ -230,7 +230,7 @@ const AboutUs = () => {
               <div className="w-40 h-40 mx-auto mb-6 relative group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-green-500 to-green-300 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse-slow"></div>
                 <div className="relative bg-black rounded-full p-1 h-full w-full">
-                  <img src="src/assets/placeholder/placeholder.png" alt="Saransh" className="w-full h-full rounded-full object-cover transform transition duration-700 hover:scale-110" />
+                  <img src="src/assets/placeholder/saransh.jpeg" alt="Saransh" className="w-full h-full rounded-full object-cover transform transition duration-700 hover:scale-110" />
                 </div>
               </div>
               <h3 className="text-2xl font-semibold text-green-400">Saransh</h3>
@@ -241,7 +241,7 @@ const AboutUs = () => {
               <div className="w-40 h-40 mx-auto mb-6 relative group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-green-500 to-green-300 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse-slow"></div>
                 <div className="relative bg-black rounded-full p-1 h-full w-full">
-                  <img src="src/assets/placeholder/placeholder.png" alt="Shaurya" className="w-full h-full rounded-full object-cover transform transition duration-700 hover:scale-110" />
+                  <img src="src/assets/placeholder/shaurya.jpeg" alt="Shaurya" className="w-full h-full rounded-full object-cover transform transition duration-700 hover:scale-110" />
                 </div>
               </div>
               <h3 className="text-2xl font-semibold text-green-400">Shaurya</h3>
@@ -252,7 +252,7 @@ const AboutUs = () => {
               <div className="w-40 h-40 mx-auto mb-6 relative group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-green-500 to-green-300 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse-slow"></div>
                 <div className="relative bg-black rounded-full p-1 h-full w-full">
-                  <img src="src/assets/placeholder/placeholder.png" alt="Saksham" className="w-full h-full rounded-full object-cover transform transition duration-700 hover:scale-110" />
+                  <img src="src/assets/placeholder/saksham.jpeg" alt="Saksham" className="w-full h-full rounded-full object-cover transform transition duration-700 hover:scale-110" />
                 </div>
               </div>
               <h3 className="text-2xl font-semibold text-green-400">Saksham</h3>
